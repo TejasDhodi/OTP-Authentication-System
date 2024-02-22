@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const connectToDatabase = async () => {
     try {
-        await mongoose.connect('mongodb+srv://TejasDhodi:Tejas755@tejadhodi.yxoxnmb.mongodb.net/VerifcationTest?retryWrites=true&w=majority');
+        await mongoose.connect(process.env.MONGO_URI);
         console.log('Connection Established');
     } catch (error) {
         console.log('Unable to connect to Database', error);
