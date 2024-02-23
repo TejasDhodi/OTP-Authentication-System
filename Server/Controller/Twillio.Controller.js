@@ -59,7 +59,7 @@ const verifyTwillio = async (req, res) => {
             res.status(404).json({ message: 'Otp Not Found' })
         }
 
-        if (sentOtp.toString() == enteredOtp) {
+        if (sentOtp == enteredOtp) {
 
             storedOtp.delete(phone);
             res.status(200).json({
