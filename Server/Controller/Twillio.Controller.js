@@ -7,11 +7,12 @@ const authToken = process.env.AUTHTOKEN;
 const client = require('twilio')(accountSid, authToken);
 
 const storedOtp = new Map();
-const expirationTime = Date.now() + (1 * 60 * 1000);
 
 const twillio = async (req, res) => {
     try {
         const { phone } = req.body;
+        const expirationTime = Date.now() + (1 * 60 * 1000);
+
         const userExist = await User.findOne({ phone });
         if (!userExist) {
             res.status(404).json({
